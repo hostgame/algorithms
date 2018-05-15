@@ -15,10 +15,10 @@ int main()
 //      "kmovw $0x80, %%eax\n\t"
 
         "movq $4,%%rax\n\t"
-        "vmovaps (%0,%%rax,0x4), %%xmm0\n\t"
-        "vmovaps (%1, %%rax, 0x4), %%xmm1\n\t"
+        "vmovapd 0x10(%0), %%xmm0\n\t"
+        "vmovaps 0x10(%1), %%xmm1\n\t"
         "mulps %%xmm1, %%xmm0\n\t"
-        "vmovaps (%2, %%rax, 0x4), %%xmm2\n\t"
+        "vmovaps 0x10(%2), %%xmm2\n\t"
         "addps %%xmm2, %%xmm0\n\t"
         "vmovaps %%xmm0, (%3)\n\t"
 
